@@ -687,6 +687,28 @@ progress {
   margin-top: var(--bs-gutter-y);
 }
 
+.console-container {
+  display: inline; /* Makes the container inline with the static text */
+  font-family: inherit; /* Ensures font consistency */
+  color: inherit; /* Inherits color from parent if needed */
+}
+
+.console-underscore {
+  display: inline-block;
+  position: relative;
+  top: -0.14em;
+  color: #bd5d38
+}
+.color-animate {
+  color: #ced4da;;
+  transition: color 0.5s ease-in-out; /* Smooth color transition */
+}
+
+
+.hidden {
+  opacity: 0;
+}
+
 .col {
   flex: 1 0 0%;
 }
@@ -1933,6 +1955,12 @@ progress {
   -webkit-overflow-scrolling: touch;
 }
 
+.skills {
+  color: #4a4a4a; /* Text color for skills */
+  font-size: 0.9em; /* Smaller font size for the skills */
+  margin-top: 4px; /* Space from the company name/subheading */
+  margin-bottom: 12px; /* Space before the detailed description */
+}
 @media (max-width: 575.98px) {
   .table-responsive-sm {
     overflow-x: auto;
@@ -10922,24 +10950,66 @@ p.lead {
     display: block;
   }
 }
-.social-icons .social-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 3.5rem;
-  width: 3.5rem;
-  background-color: #495057;
+.social-icons {
+  display: flex;
+  /* Add other styles here to position your social icons as needed */
+}
+
+.social-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 80px;
+  margin: 0 10px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #fff;
+  z-index: 1;
+  transition: .5s;
+}
+
+.social-icon .icon {
+  position: relative;
+  color: #262626;
+  transition: .5s;
+  z-index: 3;
+  display: block;
+  font-size: 30px;
+}
+
+.social-icon:hover .icon {
   color: #fff;
-  border-radius: 100%;
-  font-size: 1.5rem;
-  margin-right: 1.5rem;
+  transform: rotateY(360deg);
 }
-.social-icons .social-icon:last-child {
-  margin-right: 0;
+
+.social-icon:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: .5s;
+  z-index: 2;
 }
-.social-icons .social-icon:hover {
-  background-color: #bd5d38;
+
+.social-icon:hover:before {
+  top: 0;
 }
+
+/* LinkedIn specific styles */
+.social-icon[href*="linkedin"]:before {
+  background: #0077b5; /* LinkedIn brand color */
+}
+
+/* GitHub specific styles */
+.social-icon[href*="github"]:before {
+  background: #333; /* GitHub brand color, you can change it to whatever you like */
+}
+
 
 .dev-icons {
   font-size: 3rem;

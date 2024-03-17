@@ -43,17 +43,25 @@
                 <div class="resume-section-content">
                     <h1 class="mb-0">
                         Soham
-                        <span class="text-primary">Shitole</span>
+                        <span class="text-primary" id="name-animation">
+                            <span class="color-animate">S</span><span class="color-animate">h</span><span class="color-animate">i</span><span class="color-animate">t</span><span class="color-animate">o</span><span class="color-animate">l</span><span class="color-animate">e</span>
+                        </span>
+                    
                     </h1>
                     <div class="subheading mb-5">
                         Binghamton, NewYork.   +1(607)374-0834.
                         <a href="mailto:shitolesoham@gmail.com">shitolesoham@gmail.com</a>
                     </div>
-                    <p class="lead mb-5">With a Computer Science foundation, I specialize in blending cloud computing, data science, and agile methodologies, adeptly using Python, Java, and web technologies in roles such as Senior Research Aide and AI/ML Intern, all while focusing on collaborative problem-solving and continuous learning.</p>
+                    <p class="lead mb-5">With a Computer Science foundation, I specialize in blending cloud computing, data science, and agile methodologies, adeptly using Python, Java, and web technologies in roles such as Senior Research Assistant and AI/ML Intern, all while focusing on collaborative problem-solving and continuous learning.</p>
                     <div class="social-icons">
-                        <a class="social-icon" href="https://www.linkedin.com/in/soham-shitole"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://github.com/sshitol1"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.linkedin.com/in/soham-shitole">
+                            <span class="icon"><i class="fab fa-linkedin-in"></i></span>
+                        </a>
+                        <a class="social-icon" href="https://github.com/sshitol1">
+                            <span class="icon"><i class="fab fa-github"></i></span>
+                        </a>
                     </div>
+                    
                 </div>
             </section>
             <hr class="m-0" />
@@ -69,8 +77,11 @@
                                     <img src="assets/img/suny_rf.jpeg" alt="suny_rf" style="width: 100px; height: 100px; margin-right: 10px;">
                                     <!-- Text content -->
                                     <div>
-                                        <h3 class="mb-0">Senior Research Aide</h3>
+                                        <h3 class="mb-0">Senior Research Assistant</h3>
                                         <div class="subheading mb-3">SUNY RF</div>
+                                        <p class="skills">
+                                            Data Analysis, Project Management, LabVIEW, MySQL, CFD Simulations
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="flex-shrink-0"><span class="text-primary"> November 2022 - Present</span></div>
@@ -82,9 +93,7 @@ retrieval efficiency, and achieving a 25% increase in data accuracy and system s
 ● Lead a team of 8 cross-functional researchers in data center validation tests and standardizing CFD simulations for airflow modeling
 with Python and NVIDIA GPUs, enhancing analysis accuracy and process efficiency</p>
                     </details>
-                        
-                            
-                    
+
                     <details>
                         <summary>
                             <div class="d-flex flex-column flex-md-row justify-content-between">
@@ -265,6 +274,28 @@ quality and a 30% reduction in noise through CNN fine-tuning</p>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
         <script src="scripts/toggleDescription.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const letters = document.querySelectorAll('#name-animation .color-animate');
+                const newColor = '#bd5d38'; // The color we want to animate to
+                let i = 0;
+            
+                function animateLetterColor() {
+                    if (i < letters.length) {
+                        setTimeout(() => {
+                            letters[i].style.color = newColor;
+                            i++;
+                            animateLetterColor(); // Recursively call the function for the next letter
+                        }, 500); // Time in milliseconds between color changes for each letter
+                    }
+                }
+            
+                animateLetterColor(); // Start the animation
+            });
+            </script>
+            
+            
+            
         <!-- Project Modal -->
         <!-- <div id="projectModal" class="modal">
             <div class="modal-content">
