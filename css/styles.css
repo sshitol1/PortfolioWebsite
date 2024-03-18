@@ -34,7 +34,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #bd5d38;
+  --bs-primary: #e67300;
   --bs-secondary: #6c757d;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -42,7 +42,7 @@
   --bs-danger: #dc3545;
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
-  --bs-primary-rgb: 189, 93, 56;
+  --bs-primary-rgb: 204, 102, 0;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -700,7 +700,7 @@ progress {
   color: #bd5d38
 }
 .color-animate {
-  color: #ced4da;;
+  color: #adb5bd;
   transition: color 0.5s ease-in-out; /* Smooth color transition */
 }
 
@@ -11048,15 +11048,10 @@ section.resume-section .resume-section-content {
   }
 }
 
-.projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px; /* Adjust based on your layout needs */
-}
-
 .project-item {
   position: relative;
   margin-bottom: 1rem;
+  overflow: hidden;
 }
 
 .project-item img {
@@ -11065,14 +11060,13 @@ section.resume-section .resume-section-content {
   transition: transform 0.3s ease;
 }
 
-
-.project-info {
+.project-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* Adjust color and opacity as needed */
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   opacity: 0;
   display: flex;
@@ -11080,17 +11074,46 @@ section.resume-section .resume-section-content {
   align-items: center;
   justify-content: center;
   transition: opacity 0.3s ease;
-  padding: 15px; /* Adjust padding as needed */
+  padding: 15px;
+  transform: translateY(100%);
 }
 
-.project-item:hover .project-info {
+.project-item:hover .project-overlay {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .project-item:hover img {
   transform: scale(1.1);
 }
 
+.project-info {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.3s ease-in-out;
+}
+
+.project-item:hover .project-info {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+}
+
+.project-info h3 {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.project-info h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 2px;
+  background-color: black;
+}
 .modal {
   display: none; 
   position: fixed; 
@@ -11123,4 +11146,195 @@ section.resume-section .resume-section-content {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.subheading a {
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--bs-primary);
+  font-weight: 700;
+  vertical-align: top;
+}
+
+.subheading a::before,
+.subheading a::after {
+ content: '';
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.subheading a::before {
+  background-color: #adb5bd;
+  height: 2px;
+  bottom: 0;
+  transform-origin: 100% 50%;
+  transform: scaleX(0);
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.subheading a::after {
+  content: attr(data-replace);
+  height: 100%;
+  top: 0;
+  transform-origin: 100% 50%;
+  transform: translate3d(200%, 0, 0);
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+  color: #adb5bd;
+}
+
+.subheading a:hover::before {
+  transform-origin: 0% 50%;
+  transform: scaleX(1);
+}
+
+.subheading a:hover::after {
+  transform: translate3d(0, 0, 0);
+}
+
+.subheading a span {
+  display: inline-block;
+  transition: transform .3s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.subheading a:hover span {
+  transform: translate3d(-200%, 0, 0);
+}
+#experience details {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 15px;
+  overflow: hidden;
+}
+
+#experience details::before,
+#experience details::after {
+  content: '';
+  position: absolute;
+  background: var(--bs-primary);
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+#experience details::before {
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px; /* Top border */
+}
+
+#experience details::after {
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 2px; /* Bottom border */
+}
+
+#experience details > div::before,
+#experience details > div::after {
+  content: '';
+  position: absolute;
+  background: var(--bs-primary);
+  transition: transform 0.3s ease 0.3s;
+  transform: scaleY(0);
+  transform-origin: center;
+}
+
+#experience details > div::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px; /* Left border */
+}
+
+#experience details > div::after {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 2px; /* Right border */
+}
+
+#experience details:hover::before,
+#experience details:hover::after {
+  transform: scaleX(1);
+}
+
+#experience details:hover > div::before,
+#experience details:hover > div::after {
+  transform: scaleY(1);
+}
+
+#experience details:hover .skills {
+  color: var(--bs-primary); /* Change to desired hover color */
+}
+.resume-section-content details ul {
+  padding-left: 20px; /* Adjust padding as needed */
+  list-style-type: none; /* Removes bullet points */
+}
+
+.resume-section-content details ul li {
+  margin-bottom: 10px; /* Adds space between points */
+}
+/* Initial state for list items */
+.resume-section-content details ul li {
+  margin-bottom: 10px; /* Space between items */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for color and transform */
+  color: #6c757d; /* Initial color */
+  transform: translateX(0); /* Initial position */
+}
+
+/* Hover state */
+.resume-section-content details ul li:hover {
+  color: #fff; /* Highlight color on hover */
+  transform: translateX(5px); /* Slight move to the right */
+}
+
+.list-inline-item {
+  position: relative;
+  transition: color 0.3s ease; /* Add transition for smooth color change */
+}
+
+.list-inline-item:hover {
+  color: var(--bs-primary); /* Change the color to your desired value */
+}
+
+.list-inline-item::after {
+  content: attr(data-description);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.list-inline-item::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 5px solid rgba(0, 0, 0, 0.8);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.list-inline-item:hover::after,
+.list-inline-item:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
